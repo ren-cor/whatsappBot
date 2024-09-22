@@ -89,7 +89,7 @@ class MessageTemplate():
 	"info": """ This WhatsApp bot is coded by RC. Version: 0.1""",
 
 	"link": """ This is the link to the live google sheet with all transactions: 
-	https://docs.google.com/spreadsheets/d/1o0vay9Fb2kA6GuWfBPPG6ZuhFS7KQoiCSBt6EzETCg4/
+	https://docs.google.com/spreadsheets/d/{spreadsheet_id}/
 	""",
 
 	"ping": "Pong!",
@@ -110,4 +110,8 @@ class MessageTemplate():
 			data_table += (names[i] + ": " + balance[i] + "\n")
 
 		return self.templates["status"].format(data_table=data_table)
+
+
+	def link(self, data):
+		return self.templates["link"].format(spreadsheet_id=data["SPREADSHEET_ID"])
 

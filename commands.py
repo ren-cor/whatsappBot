@@ -72,7 +72,9 @@ class Commands():
 		return {"status": "EXECUTED", "action":"KILL"}
 
 	def link(self, command):
-		return {"status": "EXECUTED", "template":"link"}
+		data = {}
+		data["SPREADSHEET_ID"] = self.sheet.spreadsheetId
+		return {"status": "EXECUTED", "template":"link", "data":data}
 
 	def ping(self, command):
 		return {"status": "EXECUTED", "template":"ping"}
