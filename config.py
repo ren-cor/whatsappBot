@@ -1,25 +1,55 @@
 # configuration file for the project
 class Config():
 
+	# To decide every how often the bot reads new messages from the chat, in seconds
+	pollingRate = 3
+
+	#The character that dictates commands
+	commandChar  = "/"
+
+	#Whether to send the greeting messsage in chat when the app starts
+	greetingFlag = True
+
+	# This will be at the start of every message sent by the bot
 	header = "[BOT]: "
-	numberParticipants = 4
+	
+
 	billsWorksheet = "Bills!"
 	billsParams = 5
 	billsPayerIndex = 3
 	expenseWorksheet = "MiscExpenses!"
 	expenseParams = 4
 	expensePayerIndex = 2
+
+	# To configure the members of the group, in this dictionary add the initial as key, 
+	# and the list [index, name] as object
 	initials = {
 		"E":[0, "Edoardo"],
 		"F":[1, "Federico"],
 		"R":[2, "Renato"],
 		"U":[3, "Umberto"]
 	}
+
+	# Configure the place in the spreadsheet where the total balance for everyone is,
+	# remember the ! at the end of the worksheet name
 	summaryRanges = {
 		"worksheet":"Summary!",
 		"namesRange":"B1:E1",
 		"dataRange":"B4:E4"
 	}
+
+	local_variables = {
+		"DEBUG":".ENV-STRING",
+		"GROUP_NAME":".ENV-STRING",
+		"CHROME_SESSION":".ENV-STRING",
+		"HEADLESS":".ENV-BOOL",
+		"SERVICE_ACCOUNT":".ENV-STRING",
+		"SPREADSHEET_ID":".ENV-STRING",
+
+	}
+
+	# If WA web changes the class name, update it here
+	messagesHTMLClass = "_ao3e.selectable-text.copyable-text"
 
 class MessageTemplate():
 
@@ -42,7 +72,7 @@ class MessageTemplate():
 	"greeting":"Hello, I am the WA helper and my goal is to help you keep track of your expenses, type /help for a list of commands",
 
 	"help": """ Hello I am the WA bot, I am here to help you keep track of your bills and expenses as a group.
-	Find below the list of commands:
+	Find the list of available commands below:
 
 	
 	/bill - use this command to add a bill to the list
@@ -56,13 +86,15 @@ class MessageTemplate():
 
 	""",
 
+	"info": """ This WhatsApp bot is coded by RC. Version: 0.1""",
+
 	"link": """ This is the link to the live google sheet with all transactions: 
 	https://docs.google.com/spreadsheets/d/1o0vay9Fb2kA6GuWfBPPG6ZuhFS7KQoiCSBt6EzETCg4/
 	""",
 
 	"ping": "Pong!",
 
-	"status": """This is the current balance for the users:
+	"status": """Find the current balance for all users below:
 	{data_table}"""
 	}
 

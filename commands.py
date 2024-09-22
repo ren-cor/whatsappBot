@@ -1,4 +1,3 @@
-from logger import consoleLog
 from config import Config
 
 class Commands():
@@ -10,6 +9,7 @@ class Commands():
 			"bill": self.bill,
 			"expense": self.expense,
 			"help":self.help,
+			"info":self.info,
 			"link":self.link,
 			"ping": self.ping,
 			"status": self.status,
@@ -64,6 +64,9 @@ class Commands():
 
 	def help(self, command):
 		return {"status": "EXECUTED", "template":"help"}
+
+	def info(self, command):
+		return {"status": "EXECUTED", "template":"info"}
 
 	def kill(self, command):
 		return {"status": "EXECUTED", "action":"KILL"}

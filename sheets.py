@@ -1,12 +1,6 @@
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-# Load env variables
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-
 
 class Sheet():
 
